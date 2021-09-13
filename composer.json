@@ -1,0 +1,22 @@
+{
+    "name": "vendimia/datetime",
+    "description": "Classes for manipulate date, time and time intervals",
+    "license": "GPL-3.0-or-later",
+    "keywords": ["php", "date", "time", "datetime"],
+    "require": {
+        "php": ">=8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vendimia\\DateTime\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Oliver Etchebarne",
+            "email": "yo@drmad.org",
+            "homepage": "https://drmad.org",
+            "role": "developer"
+        }
+    ]
+}
