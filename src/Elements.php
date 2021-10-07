@@ -68,13 +68,15 @@ abstract class Elements
     /**
      * Sets an element value
      */
-    public function setElement($element, $value)
+    public function setElement($element, $value): self
     {
-        if (!in_array($element, $this->elements)) {
+        if (!key_exists($element, $this->element)) {
             throw new InvalidArgumentException("'{$element}' is not a valid DateTime element.");
         }
 
-        $this->elements[$element] = $value;
+        $this->element[$element] = $value;
+
+        return $this;
     }
 
     /**
@@ -105,7 +107,7 @@ abstract class Elements
     /**
      * Set the year element
      */
-    public function setYear(int $year)
+    public function setYear(int $year): self
     {
         return $this->setElement('year', $year);
     }
@@ -129,7 +131,7 @@ abstract class Elements
     /**
      * Set the month element
      */
-    public function setMonth(int $month)
+    public function setMonth(int $month): self
     {
         return $this->setElement('month', $month);
     }
@@ -153,7 +155,7 @@ abstract class Elements
     /**
      * Set the day element
      */
-    public function setDay(int $day)
+    public function setDay(int $day): self
     {
         return $this->setElement('day', $day);
     }
@@ -177,7 +179,7 @@ abstract class Elements
     /**
      * Set the hour element
      */
-    public function setHour(int $hour)
+    public function setHour(int $hour): self
     {
         return $this->setElement('hour', $hour);
     }
@@ -201,7 +203,7 @@ abstract class Elements
     /**
      * Set the minute element
      */
-    public function setMinute(int $minute)
+    public function setMinute(int $minute): self
     {
         return $this->setElement('minute', $minute);
     }
@@ -225,7 +227,7 @@ abstract class Elements
     /**
      * Set the second element
      */
-    public function setSecond(int $second)
+    public function setSecond(int $second): self
     {
         return $this->setElement('second', $second);
     }
