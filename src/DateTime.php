@@ -30,19 +30,20 @@ class DateTime extends Elements implements Stringable
     }
 
     /**
-     * Adds or substracts an interval from this DateTime
+     * Returns a new DateTime with the $interval added or substracted.
      *
      * @param Interval $interval Interval to be added or substracted
      * @param int $sign Multiplier for adding or substracting the interval
      */
-    public function plus(Interval $interval, int $sign = 1)
+    public function plus(Interval $interval, int $sign = 1): self
     {
-        foreach ($this->element as $name => $value) {
-            $this->element[$name] += $interval->getElement($name) * $sign;
+        $datetime = clone $this;
+        foreach ($datetime->element as $name => $value) {
+            $datetime->element[$name] += $interval->getElement($name) * $sign;
         }
-        $this->buildTimestampFromElements();
+        $datetime->buildTimestampFromElements();
 
-        return $this;
+        return $datetime;
     }
 
     /**
@@ -50,7 +51,7 @@ class DateTime extends Elements implements Stringable
      * @param Interval $interval Interval to be substracted
      *
      */
-     public function minus(Interval $interval)
+     public function minus(Interval $interval): self
      {
          return $this->plus($interval, -1);
      }
