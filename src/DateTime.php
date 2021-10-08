@@ -10,7 +10,6 @@ class DateTime extends Elements implements Stringable
 {
     public function __construct($source)
     {
-        date_default_timezone_set('UTC');
         if (is_numeric($source)) {
             $this->timestamp = $source;
         } elseif (is_string($source)) {
