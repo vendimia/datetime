@@ -23,6 +23,10 @@ class Interval extends Elements
 
                 $this->element[$name] = $value;
             }
+
+            if (isset($elements['timestamp']) && $elements['timestamp']) {
+                $this->timestamp = $elements['timestamp'];
+            }
         }
     }
 
@@ -42,7 +46,7 @@ class Interval extends Elements
              'year' => floor($months / 12),
              'timestamp' => $seconds,
          ];
-         return new static($parts);
+         return new static($elements);
      }
 
     /**
@@ -125,5 +129,36 @@ class Interval extends Elements
         return static::hour($hour);
     }
 
+    /**
+     * Creates a Minute interval
+     */
+    public static function minute($minute)
+    {
+        return new static(['minute' => $minute]);
+    }
+
+    /**
+     * Alias of static::minute()
+     */
+    public static function minutes($minute)
+    {
+        return static::minute($minute);
+    }
+
+    /**
+     * Creates an Second interval
+     */
+    public static function second($second)
+    {
+        return new static(['second' => $second]);
+    }
+
+    /**
+     * Alias of static::second()
+     */
+    public static function seconds($second)
+    {
+        return static::second($second);
+    }
 
 }
