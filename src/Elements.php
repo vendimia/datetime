@@ -20,6 +20,8 @@ abstract class Elements
 
         'yearday' => 0,
         'weekday' => 0,
+
+        'timestamp' => 0,
     ];
 
     /** Built timestamp from elements */
@@ -54,7 +56,7 @@ abstract class Elements
      */
     protected function buildTimestampFromElements()
     {
-        $this->timestamp = gmmktime(
+        $this->timestamp = mktime(
             $this->element['hour'],
             $this->element['minute'],
             $this->element['second'],
