@@ -1,7 +1,9 @@
 <?php
 namespace Vendimia\DateTime;
 
+use IntlDateFormatter;
 use Stringable;
+use Locale;
 
 /**
  * Date/Time manipulation
@@ -66,9 +68,6 @@ class DateTime extends Elements implements Stringable
     /**
      * Returns a formatted date string representation.
      *
-     * If a '%' sign is found, then the strftime() PHP function will be used,
-     * otherwise the date() function will be used.
-     *
      * @param string $format Template for date/time formatting.
      */
     public function format($format = 'Y-m-d H:i:s'): string
@@ -78,13 +77,27 @@ class DateTime extends Elements implements Stringable
             return '';
         }
 
-        // Si hay un %, usamos strftime()
-        if (str_contains($format, '%')) {
-            return strftime($format, $this->timestamp);
-        }
-
         // De lo contrario, usamos date()
         return date($format, $this->timestamp);
+    }
+
+    /**
+     * Returns a ICU formatted date
+     *
+     * @param string $format ICU template for date/time formatting.
+     */
+    public function formatICU($format): string
+    {
+        // Si no hay información de la fecha/hora, retornamos una cadena vacía
+        if (is_null($this->timestamp)) {
+            return '';
+        }
+
+        $formatter = new IntlDateFormatter(
+            locale: Locale::getDefault(),
+            pattern: $format
+        );
+        return $formatter->format($this->timestamp);
     }
 
     /**
