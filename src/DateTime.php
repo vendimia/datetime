@@ -10,7 +10,7 @@ use Locale;
  */
 class DateTime extends Elements implements Stringable
 {
-    public function __construct($source)
+    public function __construct($source = null)
     {
         if (is_numeric($source)) {
             $this->timestamp = $source;
@@ -28,6 +28,11 @@ class DateTime extends Elements implements Stringable
         if (!is_null($this->timestamp)) {
             $this->fromTimestamp($this->timestamp);
         }
+    }
+
+    public static function new($source)
+    {
+        return new self($source);
     }
 
     /**
