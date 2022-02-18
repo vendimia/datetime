@@ -82,7 +82,9 @@ class DateTime extends Elements implements Stringable
             return '';
         }
 
-        // De lo contrario, usamos date()
+        // Reconstruimos el timestamp
+        $this->buildTimestampFromElements();
+
         return date($format, $this->timestamp);
     }
 
@@ -97,6 +99,9 @@ class DateTime extends Elements implements Stringable
         if (is_null($this->timestamp)) {
             return '';
         }
+
+        // Reconstruimos el timestamp
+        $this->buildTimestampFromElements();
 
         $formatter = new IntlDateFormatter(
             locale: Locale::getDefault(),
