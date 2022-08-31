@@ -30,7 +30,7 @@ class DateTime extends Elements implements Stringable
         }
     }
 
-    public static function new($source)
+    public static function new($source = null): self
     {
         return new self($source);
     }
@@ -119,7 +119,7 @@ class DateTime extends Elements implements Stringable
      * Due the varying nature of the month's days number, the resulting inteval
      * will have the days and months "disconnected", that is, days can be
      * greater than 31. E.g. two dates with 3 month different will result
-     * in a interval with days = 90 and months = 3;
+     * in an interval with days = 90 and months = 3;
      *
      * @return Interval Interval between the two DateTime;
      */
