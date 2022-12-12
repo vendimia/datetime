@@ -21,7 +21,7 @@ class DateTime extends Elements implements Stringable
             if ($this->timestamp === false) {
                 $this->timestamp = null;
             }
-        } elseif ($source instanceof Common || $source instanceof \DateTime) {
+        } elseif ($source instanceof self || $source instanceof \DateTime) {
             $this->timestamp = $source->getTimestamp();
         }
 
@@ -32,7 +32,7 @@ class DateTime extends Elements implements Stringable
 
     public static function new($source = null): self
     {
-        return new self($source);
+        return new static($source);
     }
 
     /**
@@ -116,7 +116,7 @@ class DateTime extends Elements implements Stringable
      * If $target is after $this, interval will be positive, otherwise
      * it will return a negative interval.
      *
-     * Due the varying nature of the month's days number, the resulting inteval
+     * Due the varying nature of the month's days number, the resulting interval
      * will have the days and months "disconnected", that is, days can be
      * greater than 31. E.g. two dates with 3 month different will result
      * in an interval with days = 90 and months = 3;
