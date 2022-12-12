@@ -42,4 +42,25 @@ final class DateTimeTest extends TestCase
             (string)$dt->plus(Interval::day(1))
         );
     }
+
+    public function testPlusIntervalAndSetDay()
+    {
+        $dt = new Date("2022-01-31");
+
+        $this->assertEquals(
+            '2023-02-15',
+            (string)$dt->plus(Interval::Months(13))->setDay(15)
+        );
+    }
+
+    public function testMonthsInInterval()
+    {
+        $start = new Date("2022-01-31");
+        $end = new Date("2023-03-31");
+
+        $this->assertEquals(
+            14,
+            $start->diff($end)->getMonthInterval()
+        );
+    }
 }
