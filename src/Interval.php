@@ -45,6 +45,7 @@ class Interval extends Elements
              'month' => $months % 12,
              'year' => floor($months / 12),
              'timestamp' => $seconds,
+             'months' => $months,
          ];
          return new static($elements);
      }
@@ -63,6 +64,14 @@ class Interval extends Elements
     public function asYears()
     {
         return $this->timestamp / 31556952;
+    }
+
+    /**
+     * Returns the $months part of the interval
+     */
+    public function getMonthInterval()
+    {
+        return $this->element['months'];
     }
 
     /**

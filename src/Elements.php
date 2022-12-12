@@ -22,6 +22,9 @@ abstract class Elements
         'weekday' => 0,
 
         'timestamp' => 0,
+
+        /** Months used on intervals */
+        'months' => 0,
     ];
 
     /** Built timestamp from elements */
