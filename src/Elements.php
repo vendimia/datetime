@@ -218,7 +218,7 @@ abstract class Elements
      */
     public function getSecond(): int
     {
-        return $this->getSecond('second');
+        return $this->getElement('second');
     }
 
     /**
